@@ -33,11 +33,11 @@ function ImageSlider() {
   };
 
   useEffect(() => {
-    if (isAutoPlaying) {
-      timerRef.current = setInterval(nextSlide, 3000);
-    }
-    return () => clearInterval(timerRef.current);
-  }, [isAutoPlaying, currentIndex]);
+  if (isAutoPlaying) {
+    timerRef.current = setInterval(nextSlide, 3000);
+  }
+  return () => clearInterval(timerRef.current);
+}, [isAutoPlaying, currentIndex, nextSlide]); // ← Added 'nextSlide' to dependencies
 
   return (
     <div className="project-container">
